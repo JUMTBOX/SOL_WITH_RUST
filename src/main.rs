@@ -20,7 +20,7 @@ fn main() {
     
     //  println 의 실제 구현
     //  
-    //  () => {
+    //   () => {
     //       $crate::print!("\n")
     //   };
     //   ($($arg:tt)*) => {{
@@ -30,5 +30,11 @@ fn main() {
     println!("print hello world >>> {}",guess);
     
     types::main2();
+
+    println!("Addition  >>> {} + {} = {}", 5, 10 , add01(5, 10));
 }
 
+// 더하기 
+fn add01 (a:i32, b:i32) -> i32 {
+    return a + b;
+}
