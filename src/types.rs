@@ -18,7 +18,7 @@
  * usize -> 64비트 운영체제 -> u64  
  */
 
-pub(crate) fn main () {
+pub(crate) fn main2 () {
     let my_number1:u8 = 100; // i32 - 가장 활용도가 높은 타입
     let my_number2 = 100;
     

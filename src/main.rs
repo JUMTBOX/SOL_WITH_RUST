@@ -1,3 +1,4 @@
+// modules 의 약어 mod? (== import) 
 mod types;
 
 // 타입 - Documentation
@@ -10,7 +11,24 @@ fn main() {
 
     let guess = "hello world";
     
+    // java 의 slf4j 의 log.info 같음...
+    println!("{}", x);
+    
+    // ! : 매크로 ->> ! 앞에 있는 함수명(x) , 매크로명(o)
+    // 함수 : 컴파일 -> 실행시 제어가 넘어간다.
+    // 매크로 : 치환 -> 컴파일 단계에서 다른 코드로 바꿔치기 된다.
+    
+    //  println 의 실제 구현
+    //  
+    //  () => {
+    //       $crate::print!("\n")
+    //   };
+    //   ($($arg:tt)*) => {{
+    //       $crate::io::_print($crate::format_args_nl!($($arg)*));
+    //   }};
+
     println!("print hello world >>> {}",guess);
-    types::main();
+    
+    types::main2();
 }
 
