@@ -1,5 +1,6 @@
 // modules 의 약어 mod? (== import) 
 mod types;
+mod lecture3;
 
 // 타입 - Documentation
 // struct Book;
@@ -31,10 +32,7 @@ fn main() {
     
     types::main2();
 
-    println!("Addition  >>> {} + {} = {}", 5, 10 , add01(5, 10));
-}
+    println!("Addition  >>> {} + {} = {}", 5, 10 , lecture3::add01(5, 10));
 
-// 더하기 
-fn add01 (a:i32, b:i32) -> i32 {
-    return a + b;
+    lecture3::lec03();
 }
