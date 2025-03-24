@@ -1,38 +1,38 @@
-// modules 의 약어 mod? (== import) 
-mod types;
-mod lecture3;
+use std::io;
+use std::cmp::Ordering;
+use rand::Rng;
 
-// 타입 - Documentation
-// struct Book;
-fn main() {
-    // unused variable 있으면 compiler 가 뭐라함 
-    let x/* : i16*/ = 10;
-    // _ (underscore 붙이면 무시함) @ts-ignore 같은 것
-    let _y : i16 = 9; 
+fn main () {
+    println!("guess the number");
 
-    let guess = "hello world";
+    let secret_num = rand::rng().random_range(1..=100);
+
+    // println!("the secret number is: {secret_num}");
     
-    // java 의 slf4j 의 log.info 같음...
-    println!("{}", x);
-    
-    // ! : 매크로 ->> ! 앞에 있는 함수명(x) , 매크로명(o)
-    // 함수 : 컴파일 -> 실행시 제어가 넘어간다.
-    // 매크로 : 치환 -> 컴파일 단계에서 다른 코드로 바꿔치기 된다.
-    
-    //  println 의 실제 구현
-    //  
-    //   () => {
-    //       $crate::print!("\n")
-    //   };
-    //   ($($arg:tt)*) => {{
-    //       $crate::io::_print($crate::format_args_nl!($($arg)*));
-    //   }};
+    loop {
+        println!("input your guess");
 
-    println!("print hello world >>> {}",guess);
+        let mut guess = String::new();
     
-    types::main2();
-
-    println!("Addition  >>> {} + {} = {}", 5, 10 , lecture3::add01(5, 10));
-
-    lecture3::lec03();
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("Failed to readLine");
+        
+        // match 키워드가 (java, js)의 switch 키워드 같은 역할을 하는 듯
+        let guess:u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+    
+        match guess.cmp(&secret_num) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => {
+                println!("you win!");
+                break;
+            },
+        }
+    
+        println!("you guessed!: {guess}");   
+    }
 }
